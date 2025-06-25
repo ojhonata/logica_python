@@ -6,20 +6,54 @@ opcao = [
         'categorias': ['Frutas', 'Cores', 'Nome'],
 
         'frutas': ['Maçã', 'Pera', 'uva'],
-        'cores': ['Azul', 'Verde', 'Vermelho']
+        'cores': ['Azul', 'Verde', 'Vermelho'],
+        'nome': ['Jhow', 'Jorge', 'Tobias']
     }
 ]
 
-for menu in opcao:
-    for category in menu['categorias']:
-        print(f'Categorias: {category}')
+def exibir_categorias():
+    for menu in opcao:
+        for category in menu['categorias']:
+            print(category)
 
-    categoria = input('Digite uma categoria: ').lower()
-    print(menu[categoria])
-# 1. criar uma lista, dicionario contendo esses itens
-# 2. criar uma função para exibir esses itens
-# loop para percorrer a lista ou dicionario
-# return para exibir a categria
+def exibir_itens(categoria):
+    if opcao == 0:
+        print('Lista está vazia!')
+    else:
+        for itens in opcao:
+            print(itens[categoria])
 
-# o usuario podera digitar a categoria que ele quiser para exibir os itens
-# 
+def add_item(category, item):
+    for menu in opcao:
+        menu[category].append(item)
+    return 'Item adicionado'
+
+def remove_item(category, item):
+    for menu in opcao:
+        menu[category].remove(item)
+
+def main():
+    while True:
+        opcoes = input('Digite o que deseja fazer (Exibir (itens ou categorias), adicionar ou remover): ').lower()
+        try:
+            if opcoes == 'exibir':
+                exibir_categorias()
+                itens = str(input('Digite a categoria que queira exibir os itens: ')).lower()
+                exibir_itens(itens)
+            elif opcoes == 'adicionar':
+                categoria = str(input('Selecione a categoria: '))
+                item = str(input('Digite o item que deseja adicionar: '))
+
+                add_item(categoria, item)
+            elif opcoes == 'remover':
+                categoria = str(input('Selecione a categoria: '))
+                item = str(input('Digite o item que deseja adicionar: '))
+
+                remove_item(categoria, item)
+            else:
+                print('Digite uma opção válida!')
+        except:
+            print('!!!!!!!!')
+
+exibir_categorias()
+main()
