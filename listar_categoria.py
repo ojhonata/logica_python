@@ -1,6 +1,3 @@
-# programa que exiba todos os itens de uma determinada categoria 
-# o programa irá exibir as categorias exixstentes
-
 opcao = [
     {
         'categorias': ['Frutas', 'Cores', 'Nome'],
@@ -26,11 +23,12 @@ def exibir_itens(categoria):
 def add_item(category, item):
     for menu in opcao:
         menu[category].append(item)
-    return 'Item adicionado'
+    print(f'{item} adicionado')
 
 def remove_item(category, item):
     for menu in opcao:
         menu[category].remove(item)
+    print(f'{item} removido')
 
 def main():
     while True:
@@ -52,8 +50,12 @@ def main():
                 remove_item(categoria, item)
             else:
                 print('Digite uma opção válida!')
-        except:
+        except KeyError:
             print('!!!!!!!!')
+        
+        sair = input('Deseja sair? [s]im: ').lower().startswith('s')
+        if sair is True:
+            break
 
 exibir_categorias()
 main()
