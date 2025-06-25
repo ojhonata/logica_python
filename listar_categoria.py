@@ -1,51 +1,48 @@
-opcao = [
-    {
-        'categorias': ['Frutas', 'Cores', 'Nome'],
+opcao = {
+    'categorias': ['Frutas', 'Cores', 'Nome'],
 
-        'frutas': ['Maçã', 'Pera', 'uva'],
-        'cores': ['Azul', 'Verde', 'Vermelho'],
-        'nome': ['Jhow', 'Jorge', 'Tobias']
-    }
-]
+    'frutas': ['Maçã', 'Pera', 'uva'],
+    'cores': ['Azul', 'Verde', 'Vermelho'],
+    'nome': ['Jhow', 'Jorge', 'Tobias']
+}
 
 def exibir_categorias():
-    for menu in opcao:
-        for category in menu['categorias']:
-            print(category)
+    for category in opcao['categorias']:
+        print(category)
 
 def exibir_itens(categoria):
     if opcao == 0:
         print('Lista está vazia!')
-    else:
-        for itens in opcao:
-            print(itens[categoria])
+    else:        
+        print(opcao[categoria])
 
 def add_item(category, item):
-    for menu in opcao:
-        menu[category].append(item)
+    opcao[category].append(item)
     print(f'{item} adicionado')
 
 def remove_item(category, item):
-    for menu in opcao:
-        menu[category].remove(item)
-    print(f'{item} removido')
+    if category in opcao['categorias'] and item in opcao[category]:
+        opcao[category].remove(item)
+        print(f'{item} removido')
+    else:
+        print('Categoria ou item não encontrado')
 
 def main():
     while True:
-        opcoes = input('Digite o que deseja fazer (Exibir (itens ou categorias), adicionar ou remover): ').lower()
+        opcoes = input('Digite o que deseja fazer\n 1 - Exibir itens ou categorias \n 2 - adicionar\n 3 - remover \nEscolha: ').lower()
         try:
-            if opcoes == 'exibir':
+            if opcoes == '1':
                 exibir_categorias()
                 itens = str(input('Digite a categoria que queira exibir os itens: ')).lower()
                 exibir_itens(itens)
-            elif opcoes == 'adicionar':
+            elif opcoes == '2':
                 categoria = str(input('Selecione a categoria: '))
-                item = str(input('Digite o item que deseja adicionar: '))
+                item = str(input('Digite o item que deseja adicionar: ')).capitalize()
 
                 add_item(categoria, item)
-            elif opcoes == 'remover':
+            elif opcoes == '3':
                 categoria = str(input('Selecione a categoria: '))
-                item = str(input('Digite o item que deseja adicionar: '))
+                item = str(input('Digite o item que deseja remover: ')).capitalize()
 
                 remove_item(categoria, item)
             else:
@@ -57,5 +54,4 @@ def main():
         if sair is True:
             break
 
-exibir_categorias()
 main()
