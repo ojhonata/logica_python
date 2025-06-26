@@ -21,9 +21,8 @@ def read_db():
     for i in resultado:
         print(i)
 
-read_db()
 
-def update_product(id, quantidade):
+def update_db(id, quantidade):
     try:
         cursor = conexao_db.cursor()
         sql = 'UPDATE produto SET quantidade = %s WHERE produto_id = %s'
@@ -36,4 +35,18 @@ def update_product(id, quantidade):
     except Exception as e:
         print('!!!!!!!', e)
 
-update_product(2, 10)
+def delete_db(id):
+    try:
+        cursor = conexao_db.cursor()
+        sql = 'DELETE FROM produto WHERE produto_id = %s'
+        valor = (id,) # isso é uma tupla de um unnico item, sem a , python entende que é só um numero
+
+        cursor.execute(sql, valor)
+
+        conexao_db.commit()
+        print('Produto deletado')
+    except Exception as e:
+        print(e)
+
+read_db()
+delete_db(5)
