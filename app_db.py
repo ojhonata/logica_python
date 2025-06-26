@@ -1,20 +1,19 @@
 import mysql.connector
 
-try:
-    conexao_db = mysql.connector.connect(
+def conectar():
+    try:
+        return mysql.connector.connect(
         host = "localhost",
         user = "root",
         password = "280103",
-        database = "lista_compras"
+        database = "lista_compras")
 
-    )
+        print('conexão bem sucedida')
 
-    print('conexão bem sucedida')
+    except Exception as e:
+        print('Erro ao conectar com o banco de dados',e)
 
-except:
-    print('!!!!')
-
-def read_db():
+def read_db(conexao_db):
     cursor = conexao_db.cursor() # usado para escrever comandos sql
     cursor.execute('select * from produto')
     resultado = cursor.fetchall() # busca todos os resultados de uma consulta sql feita no cursor em forma de tuplas
@@ -22,7 +21,7 @@ def read_db():
         print(i)
 
 
-def update_db(id, quantidade):
+def update_db(conexao_db, id, quantidade):
     try:
         cursor = conexao_db.cursor()
         sql = 'UPDATE produto SET quantidade = %s WHERE produto_id = %s'
@@ -35,7 +34,7 @@ def update_db(id, quantidade):
     except Exception as e:
         print('!!!!!!!', e)
 
-def delete_db(id):
+def delete_db(conexao_db, id):
     try:
         cursor = conexao_db.cursor()
         sql = 'DELETE FROM produto WHERE produto_id = %s'
@@ -48,5 +47,7 @@ def delete_db(id):
     except Exception as e:
         print(e)
 
-read_db()
-delete_db(5)
+
+conexao_db = conectar()
+read_db(conexao_db)
+delete_db(conexao_db, 5)
