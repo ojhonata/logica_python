@@ -7,9 +7,6 @@ def conectar():
         user = "root",
         password = "280103",
         database = "lista_compras")
-
-        print('conexão bem sucedida')
-
     except Exception as e:
         print('Erro ao conectar com o banco de dados',e)
 
