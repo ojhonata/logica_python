@@ -1,8 +1,8 @@
-def palindromo(num):
-    texto = str(num)
-    if texto == texto[::-1]:
+def palindromo(termo):
+    texto = str(termo).upper() # armazena o parametro num na variavel como string
+    if texto == texto[::-1]: # se texto for igua a texto invertido 
         print('Palíndromo')
     else:
         print('Não Palíndromo')
 
-palindromo(121)
+palindromo('mirim')
