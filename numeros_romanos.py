@@ -14,7 +14,8 @@ def converter_romano(numeros):
     anterior = 0
 
     try:
-        for i in range(len(numero)): #conta quantos indices
+        for i in range(len(numero)): #conta quantos indices o loop vai rodar um vez para cada indice da variavel numero
+            print('i', i)
             valor = num_romanos[numero[i]] # pega indice por indice e pega o valor atribuido no dicionário (valor)
             print(valor)
             print('anterior', anterior)
@@ -25,7 +26,7 @@ def converter_romano(numeros):
             anterior = valor # armazena o valor na variavel anterior a cada loop ele armazena o próximo número
         return total
     except KeyError: # caso o caracter digitado não esteja no dicionário
-        return None
+        return None # retorna None
 
 numeros = input('Digite um número romano: ').upper() 
 
