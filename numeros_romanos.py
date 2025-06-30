@@ -14,13 +14,15 @@ def converter_romano(numeros):
     anterior = 0
 
     try:
-        for i in range(len(numero)): #conta quantos indices 
+        for i in range(len(numero)): #conta quantos indices
             valor = num_romanos[numero[i]] # pega indice por indice e pega o valor atribuido no dicionário (valor)
+            print(valor)
+            print('anterior', anterior)
             if valor < anterior: # verifica se o numero do primeiro indice é maior que o anterior (variavel)
                 total -= valor #subtrai o valor e armazena na variável total
             else:
                 total += valor
-            anterior = valor
+            anterior = valor # armazena o valor na variavel anterior a cada loop ele armazena o próximo número
         return total
     except KeyError: # caso o caracter digitado não esteja no dicionário
         return None
