@@ -7,7 +7,7 @@ def subsequencia(sequencia):
         else:
             num_repitidas[i] = 1 # senão o contador será igual a 1
     for chave, valor in num_repitidas.items(): # percorre chave e valor no dicionario
-        if chave + 1 in num_repitidas: # se a chave atual + 1 (1 + 2) estiver no dicionario
+        if chave + 1 in num_repitidas: # se a chave atual + 1 (1 + 2) existir no dicionario
             soma = valor + num_repitidas[chave + 1] # soma os valores das duas chaves
             if soma > maior: # se a soma for maior que o valor atual de 'maior'
                 maior = soma # atualiza 'maior' com essa nova soma
