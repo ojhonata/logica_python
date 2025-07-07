@@ -6,6 +6,6 @@ def somar_numeros(numeros):
         num_int = int(i)
         print(num_int)
         total += num_int
-    return total    
+    return total
 
 print(somar_numeros(1234))
