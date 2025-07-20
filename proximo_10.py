@@ -1,6 +1,7 @@
 def proximo_a_dez(numeros, tolerancia=2): 
     resultado = 0
     for num in numeros: # passamos números por números
+        print(num)
         if num + 1 in numeros: # se o número atual + 1 estiver no parametro 'numeros'
             resultado = num + (num + 1) # soma o número atual + o próximo número
             diferenca = abs(resultado - 10) # subtraimos o resultado por 10, se o número for negativo ele torna a ser absoluto/positivo (abs)
